@@ -88,6 +88,18 @@ Credentials are read only from the environment. The repository contains no defau
 
 ## Input formats
 
+To create rollout inputs from Hugging Face task packages, follow
+[Prepare task inputs](../../../OpenMLE-Gym/docs/task-inputs.md). This covers both
+downloadable packages and recipes and writes the existing `prompt`/`metadata`
+Parquet format. Use its absolute output path for `OPENMLE_PARALLEL_DATA` or
+`OPENMLE_EVOLUTIONARY_DATA` in the commands below.
+
+For evolutionary rollout, `OPENMLE_TASK_DATA_ROOT` is the sandbox-visible
+**parent** of final-scoring task directories, not the Parquet directory or a
+single task package. For `metadata.data_dir=/mnt/tasks/titanic`, set it to
+`/mnt/tasks` to reuse the same package. Parallel rollout uses `metadata.data_dir`
+directly. Both require the packages to be accessible to sandbox workers.
+
 Parallel rollout reads Parquet or JSON records with `prompt` and `metadata` fields. The metadata must provide the task identity and the task data required by the configured sandbox evaluator.
 
 Training data must contain an `id` and a `messages` sequence:

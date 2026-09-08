@@ -305,6 +305,9 @@ Use `openmle-task` for new workflows.
 
 ## Consume released task packages
 
+See [Prepare task inputs](task-inputs.md) for single-task and multi-task inputs
+and the exact Evo, SFT rollout and RL settings.
+
 Use the data-side preparation command after downloading a complete package:
 
 ```bash

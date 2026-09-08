@@ -178,6 +178,11 @@ presence of `test_answer.csv`.
 
 ## Other consumers
 
+See [Prepare task inputs](../../OpenMLE-Gym/docs/task-inputs.md) for multi-task
+tables and consumer-specific package paths. Evolutionary SFT uses
+`OPENMLE_TASK_DATA_ROOT` for its final-scoring parent; Evo uses
+`OPENMLE_SUBMIT_DATA_DIR_ROOT`.
+
 The Parquet contains `prompt` and `metadata` columns.
 
 | Consumer | Input setting | Reader |

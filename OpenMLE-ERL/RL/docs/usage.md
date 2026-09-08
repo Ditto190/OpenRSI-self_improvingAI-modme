@@ -93,6 +93,19 @@ The single-node asynchronous path has real runtime validation. The other profile
 
 ## Configure
 
+Prepare task Parquets from complete Hugging Face packages using
+[Prepare task inputs](../../../OpenMLE-Gym/docs/task-inputs.md). Use the training
+selection's absolute Parquet path for `PROMPT_DATA` and the evaluation selection's
+path for `EVAL_PROMPT_DATA` in your copied configuration. The existing launcher
+reads `prompt`; OpenMLE rollout reads the accompanying `metadata`, including
+the sandbox-visible `data_dir`. Make both Parquets available inside the training
+container and the task packages available to the sandbox workers.
+
+Prepare separate task selections for independent training/evaluation. Reusing a
+single task is suitable for exercising input preparation but does not establish
+held-out performance. Keep the leaderboard, model and runtime settings below;
+the task preparation command supplies only the input table.
+
 Copy one template outside the repository:
 
 ```bash
