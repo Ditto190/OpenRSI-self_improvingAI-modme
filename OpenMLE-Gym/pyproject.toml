@@ -12,6 +12,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+input = ["pyarrow>=14"]
 build = [
     "kaggle>=1.6",
     "langchain>=0.2",
@@ -27,6 +28,7 @@ evaluator = [
     "python-dotenv>=1.0",
 ]
 all = [
+    "pyarrow>=14",
     "anthropic>=0.34",
     "kaggle>=1.6",
     "langchain>=0.2",

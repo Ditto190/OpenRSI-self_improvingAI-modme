@@ -54,3 +54,5 @@ Conda environment, follow [`benchmarks/naturebench_local_quick/README.md`](bench
 Datasets, task packages, evaluator services, model weights, model servers, sandbox services, container images, credentials, and paper-result outputs are external.
 
 Original OpenMLE material follows the repository-level [CC BY-NC 4.0 license](../LICENSE). Vendored AIRA-Dojo material retains [its own license](third_party/aira-evo/LICENSE) and [third-party notices](third_party/aira-evo/THIRD_PARTY_LICENSES.md).
+
+For a downloaded Gym task, see [Gym task package input and path configuration](docs/gym-task-packages.md).

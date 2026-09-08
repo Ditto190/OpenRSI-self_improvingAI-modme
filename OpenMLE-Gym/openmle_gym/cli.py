@@ -84,6 +84,15 @@ def build_parser() -> argparse.ArgumentParser:
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
+    prepare = subparsers.add_parser(
+        "prepare-input", help="Prepare the existing Evo/SFT-rollout/RL task input Parquet."
+    )
+    prepare.add_argument("--task-dir", required=True, help="Downloaded task-package root.")
+    prepare.add_argument("--sandbox-task-dir", required=True, help="Absolute task-package path visible to the sandbox.")
+    prepare.add_argument("--output", required=True, help="Output Parquet file.")
+    prepare.add_argument("--prompt-template", help="Original role/content JSON messages; defaults to the SFT4 selfvalid0327 template.")
+    prepare.add_argument("--task-uuid", help="Reuse an existing input UUID; otherwise preserve the package UUID or assign a new one.")
+
     build = subparsers.add_parser("build", help="Build task packages from Kaggle competition slugs.")
     build.add_argument("--slugs-file", required=True, help="Text file with one Kaggle slug or URL per line.")
     build.add_argument("--output-root", default="artifacts/builds", help="Directory where build batches are written.")
@@ -162,6 +171,18 @@ def main(argv: list[str] | None = None) -> int:
     _load_env_file()
     parser = build_parser()
     args = parser.parse_args(argv)
+
+    if args.command == "prepare-input":
+        from .prepare_input import prepare_input
+
+        _print_json(prepare_input(
+            task_dir=args.task_dir,
+            sandbox_task_dir=args.sandbox_task_dir,
+            output=args.output,
+            prompt_template=args.prompt_template,
+            task_uuid=args.task_uuid,
+        ))
+        return 0
 
     if args.command == "build":
         return _print_batch_json(

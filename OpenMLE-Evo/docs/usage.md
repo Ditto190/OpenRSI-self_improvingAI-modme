@@ -248,3 +248,5 @@ The search JSON, checkpoints, code, and statistics are the authoritative artifac
 ### Only one Python process visible in multi-GPU mode
 
 This is by design: the current implementation is a single-process async multi-worker. The actual GPU work is scheduled by the model service and the sandbox router, not by one local CUDA process per worker.
+
+For downloaded OpenMLE-Gym task packages, see [the task preparation guide and validation/submit path settings](gym-task-packages.md).

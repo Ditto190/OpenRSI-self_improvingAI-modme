@@ -302,3 +302,26 @@ The canonical interface is `openmle-task`. The `scripts/` directory also provide
 - `scripts/evaluate.py` runs `openmle-task evaluate`.
 
 Use `openmle-task` for new workflows.
+
+## Consume released task packages
+
+Use the data-side preparation command after downloading a complete package:
+
+```bash
+uv sync --no-editable --extra input
+uv run --no-editable --extra input openmle-task prepare-input \
+  --task-dir /host/tasks/titanic-extended@1 \
+  --sandbox-task-dir /mounted/tasks/titanic-extended@1 \
+  --output artifacts/eval.parquet
+```
+
+It reads the package's existing description, data preview and metadata and uses
+the SFT4 selfvalid0327 prompt. It writes the same
+`prompt`/`metadata` Parquet already read by Evo, SFT trajectory generation and RL.
+It does not create SFT training trajectories or new data splits.
+
+For Evo, set `OPENMLE_EVAL_DATA` to this Parquet and
+`OPENMLE_SUBMIT_DATA_DIR_ROOT=/mounted/tasks` to reuse the same package for final
+scoring. The latter is the **parent**, not the single task directory.
+See [complete download, mount and run instructions](../../OpenMLE-Evo/docs/gym-task-packages.md)
+for the existing consumer settings and independent test-package option.
