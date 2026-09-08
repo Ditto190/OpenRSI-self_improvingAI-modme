@@ -133,11 +133,9 @@ descriptions and binds `metadata.data_dir` to the sandbox-visible task path.
 It preserves a package UUID when available, otherwise creates an input UUID;
 `--task-uuid` can reuse an existing record's identity.
 
-The default prompt template is `selfvalid0327-sft4.json`. It specifies the
+The prompt template is `selfvalid0327-sft4.json`. It specifies the
 available libraries, resource assumptions, submission format and validation-score
 output. Configure the sandbox resources to match the template.
-To use a different prompt, pass a JSON list of `role`/`content` messages with
-`--prompt-template /path/to/prompt.json`.
 
 ## Run Evo
 

@@ -8,7 +8,7 @@ from uuid import uuid4
 
 import pandas as pd
 
-DEFAULT_PROMPT = Path(__file__).parent / "templates/selfvalid0327-sft4.json"
+PROMPT_PATH = Path(__file__).parent / "templates/selfvalid0327-sft4.json"
 METADATA_KEYS = (
     "task_name",
     "task",
@@ -27,7 +27,6 @@ def prepare_input(
     task_dir: str,
     sandbox_task_dir: str,
     output: str,
-    prompt_template: str | None = None,
     task_uuid: str | None = None,
 ) -> dict:
     # Copy task-specific fields from the package into the consumer input schema.
@@ -51,21 +50,7 @@ def prepare_input(
             encoding="utf-8"
         ),
     )
-    template = Path(prompt_template) if prompt_template else DEFAULT_PROMPT
-    prompt = json.loads(template.read_text(encoding="utf-8"))
-    if (
-        not isinstance(prompt, list)
-        or not prompt
-        or any(
-            not isinstance(message, dict)
-            or not isinstance(message.get("role"), str)
-            or not isinstance(message.get("content"), str)
-            for message in prompt
-        )
-    ):
-        raise ValueError(
-            "Prompt template must be the original list of role/content messages"
-        )
+    prompt = json.loads(PROMPT_PATH.read_text(encoding="utf-8"))
     destination = Path(output).resolve()
     destination.parent.mkdir(parents=True, exist_ok=True)
     pd.DataFrame([{"prompt": prompt, "metadata": metadata}]).to_parquet(
@@ -77,6 +62,5 @@ def prepare_input(
         "task_dir": str(package),
         "data_dir": str(sandbox_path),
         "submit_data_dir_root": str(sandbox_path.parent),
-        "prompt_template": str(template.resolve()),
         "uuid": metadata["uuid"],
     }

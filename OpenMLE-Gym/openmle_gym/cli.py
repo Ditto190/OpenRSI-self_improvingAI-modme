@@ -90,7 +90,6 @@ def build_parser() -> argparse.ArgumentParser:
     prepare.add_argument("--task-dir", required=True, help="Downloaded task-package root.")
     prepare.add_argument("--sandbox-task-dir", required=True, help="Absolute task-package path visible to the sandbox.")
     prepare.add_argument("--output", required=True, help="Output Parquet file.")
-    prepare.add_argument("--prompt-template", help="Original role/content JSON messages; defaults to the SFT4 selfvalid0327 template.")
     prepare.add_argument("--task-uuid", help="Reuse an existing input UUID; otherwise preserve the package UUID or assign a new one.")
 
     build = subparsers.add_parser("build", help="Build task packages from Kaggle competition slugs.")
@@ -179,7 +178,6 @@ def main(argv: list[str] | None = None) -> int:
             task_dir=args.task_dir,
             sandbox_task_dir=args.sandbox_task_dir,
             output=args.output,
-            prompt_template=args.prompt_template,
             task_uuid=args.task_uuid,
         ))
         return 0
