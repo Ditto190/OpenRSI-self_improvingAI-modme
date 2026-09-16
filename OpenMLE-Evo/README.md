@@ -22,6 +22,7 @@ MLE-Bench and NatureBench Lite-v2 are parallel benchmark adapters over one share
 | `third_party/aira-evo/` | Vendored AIRA-Dojo runtime |
 | `tests/` | Existing public configuration and scheduler checks |
 | `docs/` | Architecture, operations, validation, and source scope |
+| `skills/` | OpenEvo-Max task-specific skills from EEMA |
 
 ## Quick Start
 
