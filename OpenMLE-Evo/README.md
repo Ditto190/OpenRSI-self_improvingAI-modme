@@ -6,22 +6,23 @@ MLE-Bench and NatureBench Lite-v2 are parallel benchmark adapters over one share
 
 ## Benchmark Adapters
 
-| Adapter | Entrypoint | Runbook |
-| --- | --- | --- |
-| MLE-Bench | `scripts/evaluate_airaevo.py` | [`benchmarks/mle_bench/`](benchmarks/mle_bench/) |
-| NatureBench Lite-v2 | `scripts/evaluate_naturebench.py` | [`benchmarks/naturebench_lite_v2/`](benchmarks/naturebench_lite_v2/) |
+| Adapter                 | Entrypoint                         | Runbook                                                                      |
+| ----------------------- | ---------------------------------- | ---------------------------------------------------------------------------- |
+| MLE-Bench               | `scripts/evaluate_airaevo.py`      | [`benchmarks/mle_bench/`](benchmarks/mle_bench/)                             |
+| NatureBench Lite-v2     | `scripts/evaluate_naturebench.py`  | [`benchmarks/naturebench_lite_v2/`](benchmarks/naturebench_lite_v2/)         |
 | NatureBench local quick | `scripts/run_naturebench_local.py` | [`benchmarks/naturebench_local_quick/`](benchmarks/naturebench_local_quick/) |
 
 ## Repository Contents
 
-| Path | Purpose |
-| --- | --- |
-| `scripts/` | Standard, multi-GPU, and NatureBench launchers |
-| `tts_search/` | Search, sandbox, scoring, prompting, guidance, and Hydra configuration |
-| `benchmarks/` | MLE-Bench and NatureBench Lite-v2 adapters |
-| `third_party/aira-evo/` | Vendored AIRA-Dojo runtime |
-| `tests/` | Existing public configuration and scheduler checks |
-| `docs/` | Architecture, operations, validation, and source scope |
+| Path                    | Purpose                                                                            |
+| ----------------------- | ---------------------------------------------------------------------------------- |
+| `scripts/`              | Standard, multi-GPU, and NatureBench launchers                                     |
+| `tts_search/`           | Search, sandbox, scoring, prompting, guidance, and Hydra configuration             |
+| `benchmarks/`           | MLE-Bench and NatureBench Lite-v2 adapters                                         |
+| `third_party/aira-evo/` | Vendored AIRA-Dojo runtime                                                         |
+| `tests/`                | Existing public configuration and scheduler checks                                 |
+| `docs/`                 | Architecture, operations, validation, and source scope                             |
+| `skills/`               | **EEMA**'s categorized playbooks and task-specific skills(used in OpenMLE-Evo-Max) |
 
 ## Quick Start
 
@@ -40,16 +41,16 @@ Conda environment, follow [`benchmarks/naturebench_local_quick/README.md`](bench
 
 ## Documentation
 
-| Document | Contents |
-| --- | --- |
-| [`docs/overview.md`](docs/overview.md) | Runtime architecture, benchmark adapters, execution profiles, and command overview |
-| [`docs/usage.md`](docs/usage.md) | MLE-Bench installation, configuration, launch, resume, outputs, and troubleshooting |
-| [`benchmarks/naturebench_lite_v2/RUNNING.md`](benchmarks/naturebench_lite_v2/RUNNING.md) | NatureBench Lite-v2 operations |
-| [`benchmarks/naturebench_local_quick/README.md`](benchmarks/naturebench_local_quick/README.md) | Single-task local NatureBench quick experiment |
-| [`benchmarks/naturebench_local_quick/RESULTS.md`](benchmarks/naturebench_local_quick/RESULTS.md) | Example trajectory, operator ancestry, and score attribution |
-| [`docs/validation.md`](docs/validation.md) | Source-level and runtime validation boundary |
-| [`docs/mlebench_validation_split_instructions_22.md`](docs/mlebench_validation_split_instructions_22.md) | Fixed validation instructions for the 22-task MLE-Bench Lite split |
-| [`docs/source-manifest.md`](docs/source-manifest.md) | Included runtime scope and release adjustments |
+| Document                                                                                                 | Contents                                                                            |
+| -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [`docs/overview.md`](docs/overview.md)                                                                   | Runtime architecture, benchmark adapters, execution profiles, and command overview  |
+| [`docs/usage.md`](docs/usage.md)                                                                         | MLE-Bench installation, configuration, launch, resume, outputs, and troubleshooting |
+| [`benchmarks/naturebench_lite_v2/RUNNING.md`](benchmarks/naturebench_lite_v2/RUNNING.md)                 | NatureBench Lite-v2 operations                                                      |
+| [`benchmarks/naturebench_local_quick/README.md`](benchmarks/naturebench_local_quick/README.md)           | Single-task local NatureBench quick experiment                                      |
+| [`benchmarks/naturebench_local_quick/RESULTS.md`](benchmarks/naturebench_local_quick/RESULTS.md)         | Example trajectory, operator ancestry, and score attribution                        |
+| [`docs/validation.md`](docs/validation.md)                                                               | Source-level and runtime validation boundary                                        |
+| [`docs/mlebench_validation_split_instructions_22.md`](docs/mlebench_validation_split_instructions_22.md) | Fixed validation instructions for the 22-task MLE-Bench Lite split                  |
+| [`docs/source-manifest.md`](docs/source-manifest.md)                                                     | Included runtime scope and release adjustments                                      |
 
 Datasets, task packages, evaluator services, model weights, model servers, sandbox services, container images, credentials, and paper-result outputs are external.
 
